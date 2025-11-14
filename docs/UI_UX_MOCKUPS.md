@@ -1284,6 +1284,120 @@ fun SpotifyButton(
 }
 ```
 
+### YouTube Button & Multi-Platform Controls
+
+**YouTube Red:** `Color(0xFFFF0000)`
+
+**Button States:**
+- **READY** - Red YouTube icon, ready to search
+- **SEARCHING** - Loading indicator
+- **SUCCESS** - Green checkmark (found and opened)
+- **NOT_FOUND** - Yellow warning icon
+
+```kotlin
+@Composable
+fun YouTubeButton(
+    state: YouTubeButtonState,
+    onClick: () -> Unit,
+    enabled: Boolean = true
+) {
+    val scale by animateFloatAsState(
+        targetValue = if (state == YouTubeButtonState.SEARCHING) 0.9f else 1f,
+        animationSpec = spring(stiffness = Spring.StiffnessMedium)
+    )
+
+    val color by animateColorAsState(
+        targetValue = when (state) {
+            YouTubeButtonState.READY -> Color(0xFFFF0000) // YouTube Red
+            YouTubeButtonState.SEARCHING -> MaterialTheme.colorScheme.primary
+            YouTubeButtonState.SUCCESS -> Color(0xFF4CAF50)
+            YouTubeButtonState.NOT_FOUND -> Color(0xFFFFB800)
+            else -> MaterialTheme.colorScheme.surfaceVariant
+        },
+        animationSpec = tween(300)
+    )
+
+    FilledIconButton(
+        onClick = onClick,
+        enabled = enabled,
+        modifier = Modifier
+            .size(48.dp)
+            .scale(scale),
+        colors = IconButtonDefaults.filledIconButtonColors(
+            containerColor = color
+        )
+    ) {
+        when (state) {
+            YouTubeButtonState.READY -> Icon(
+                painter = painterResource(R.drawable.ic_youtube),
+                contentDescription = "Find on YouTube"
+            )
+            YouTubeButtonState.SEARCHING -> CircularProgressIndicator(
+                modifier = Modifier.size(24.dp),
+                color = MaterialTheme.colorScheme.onPrimary
+            )
+            YouTubeButtonState.SUCCESS -> Icon(Icons.Default.Check, "Success")
+            YouTubeButtonState.NOT_FOUND -> Icon(Icons.Default.Search, "Not found")
+        }
+    }
+}
+
+enum class YouTubeButtonState {
+    DISABLED,
+    READY,
+    SEARCHING,
+    SUCCESS,
+    NOT_FOUND
+}
+```
+
+### Multi-Platform Button Group (Dual Buttons)
+
+**Layout:** Spotify + YouTube side by side
+
+```kotlin
+@Composable
+fun MusicPlatformButtons(
+    track: TrackInfo?,
+    spotifyState: SpotifyButtonState,
+    youtubeState: YouTubeButtonState,
+    onSpotifyClick: () -> Unit,
+    onYouTubeClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        // Spotify Button
+        SpotifyButton(
+            state = spotifyState,
+            onClick = onSpotifyClick
+        )
+
+        // YouTube Button (always available as fallback)
+        YouTubeButton(
+            state = youtubeState,
+            onClick = onYouTubeClick,
+            enabled = track != null
+        )
+    }
+}
+```
+
+**Visual Example (Player Screen):**
+```
+┌──────────────────────────────────────────┐
+│  Artist - Title                          │
+│                                          │
+│  ⏮️   ⏸️   ⏭️                            │
+│                                          │
+│  ❤️   [💜 Spotify]  [▶️ YouTube]  ⏲️   │
+│       48x48dp       48x48dp              │
+└──────────────────────────────────────────┘
+```
+
 ### Waveform Visualizer
 
 ```kotlin
