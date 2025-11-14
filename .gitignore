@@ -1,0 +1,34 @@
+# Android
+*.apk
+*.aar
+*.ap_
+*.aab
+*.dex
+*.class
+bin/
+gen/
+out/
+release/
+.gradle/
+build/
+local.properties
+
+# IntelliJ/Android Studio
+*.iml
+.idea/
+*.iws
+
+# Keystore
+*.jks
+*.keystore
+
+# External builds
+.externalNativeBuild
+.cxx/
+
+# OS
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.bak
