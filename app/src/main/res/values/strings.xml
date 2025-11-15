@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Violet Radio</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Strona główna</string>
+    <string name="nav_browse">Przeglądaj</string>
+    <string name="nav_favorites">Ulubione</string>
+    <string name="nav_settings">Ustawienia</string>
+
+    <!-- Player -->
+    <string name="player_play">Odtwórz</string>
+    <string name="player_pause">Pauza</string>
+    <string name="player_stop">Stop</string>
+    <string name="player_loading">Ładowanie…</string>
+    <string name="player_buffering">Buforowanie…</string>
+    <string name="player_error">Błąd odtwarzania</string>
+
+    <!-- Stations -->
+    <string name="station_favorite">Dodaj do ulubionych</string>
+    <string name="station_unfavorite">Usuń z ulubionych</string>
+    <string name="station_add_to_playlist">Dodaj do playlisty</string>
+    <string name="station_bitrate">%1$d kbps</string>
+    <string name="station_live">NA ŻYWO</string>
+
+    <!-- Track Info -->
+    <string name="track_now_playing">Teraz gra</string>
+    <string name="track_add_to_spotify">Dodaj do Spotify</string>
+    <string name="track_add_to_youtube">Otwórz w YouTube</string>
+    <string name="track_unknown_artist">Nieznany artysta</string>
+    <string name="track_unknown_title">Nieznany utwór</string>
+
+    <!-- Search -->
+    <string name="search_hint">Szukaj stacji…</string>
+    <string name="search_no_results">Nie znaleziono stacji</string>
+    <string name="search_filter_country">Kraj</string>
+    <string name="search_filter_genre">Gatunek</string>
+
+    <!-- Spotify Integration -->
+    <string name="spotify_login">Zaloguj do Spotify</string>
+    <string name="spotify_logout">Wyloguj z Spotify</string>
+    <string name="spotify_connected">Połączono ze Spotify</string>
+    <string name="spotify_disconnected">Nie połączono</string>
+    <string name="spotify_track_added">Dodano do Spotify</string>
+    <string name="spotify_track_not_found">Nie znaleziono na Spotify</string>
+    <string name="spotify_searching">Szukam na Spotify…</string>
+
+    <!-- YouTube Integration -->
+    <string name="youtube_searching">Szukam na YouTube…</string>
+    <string name="youtube_found">Znaleziono na YouTube</string>
+    <string name="youtube_not_found">Nie znaleziono na YouTube</string>
+    <string name="youtube_open">Otwórz w YouTube</string>
+
+    <!-- Settings -->
+    <string name="settings_theme">Motyw</string>
+    <string name="settings_theme_light">Jasny</string>
+    <string name="settings_theme_dark">Ciemny</string>
+    <string name="settings_theme_system">Systemowy</string>
+    <string name="settings_audio_quality">Jakość audio</string>
+    <string name="settings_music_platform">Preferowana platforma muzyczna</string>
+    <string name="settings_music_platform_spotify">Spotify</string>
+    <string name="settings_music_platform_youtube">YouTube</string>
+    <string name="settings_music_platform_both">Obie (Spotify najpierw)</string>
+    <string name="settings_notifications">Powiadomienia</string>
+    <string name="settings_about">O aplikacji</string>
+    <string name="settings_version">Wersja %1$s</string>
+
+    <!-- Errors -->
+    <string name="error_network">Brak połączenia z internetem</string>
+    <string name="error_generic">Wystąpił błąd</string>
+    <string name="error_stream_unavailable">Strumień niedostępny</string>
+    <string name="error_retry">Spróbuj ponownie</string>
+
+    <!-- Content Descriptions -->
+    <string name="cd_station_logo">Logo stacji</string>
+    <string name="cd_play_button">Przycisk odtwarzania</string>
+    <string name="cd_favorite_button">Przycisk ulubionych</string>
+    <string name="cd_menu_button">Menu</string>
+    <string name="cd_track_artwork">Okładka utworu</string>
+</resources>
