@@ -2,6 +2,7 @@ package com.violetradio.app.di
 
 import android.content.Context
 import androidx.room.Room
+import com.violetradio.app.data.local.DatabaseCallback
 import com.violetradio.app.data.local.VioletDatabase
 import com.violetradio.app.data.local.dao.*
 import dagger.Module
@@ -27,8 +28,7 @@ object DatabaseModule {
         )
         // TODO: Add migrations when schema changes
         // .addMigrations(*Migrations.ALL)
-        // TODO: Add DatabaseCallback for pre-population
-        // .addCallback(DatabaseCallback())
+        .addCallback(DatabaseCallback())
         // For development only - remove in production
         .fallbackToDestructiveMigration()
         .build()
