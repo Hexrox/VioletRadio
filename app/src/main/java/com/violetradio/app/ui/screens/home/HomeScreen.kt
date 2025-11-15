@@ -16,7 +16,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.violetradio.app.ui.components.MiniPlayer
 import com.violetradio.app.ui.components.StationCard
+import com.violetradio.app.ui.player.PlayerViewModel
 
 /**
  * Main home screen of the app
@@ -26,9 +28,11 @@ import com.violetradio.app.ui.components.StationCard
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
+    playerViewModel: PlayerViewModel = hiltViewModel(),
     modifier: Modifier = Modifier
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val playbackState by playerViewModel.playbackState.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = {
@@ -57,6 +61,16 @@ fun HomeScreen(
                         )
                     }
                 }
+            )
+        },
+        bottomBar = {
+            // Mini Player at bottom
+            MiniPlayer(
+                playbackState = playbackState,
+                onPlayPauseClick = { playerViewModel.togglePlayPause() },
+                onStopClick = { playerViewModel.stop() },
+                onPlayerClick = { /* TODO: Navigate to full player */ },
+                modifier = Modifier.padding(8.dp)
             )
         },
         snackbarHost = {
@@ -100,7 +114,7 @@ fun HomeScreen(
                 items(uiState.featuredStations) { station ->
                     StationCard(
                         station = station,
-                        onStationClick = { /* TODO: Play station */ },
+                        onStationClick = { playerViewModel.playStation(station) },
                         onFavoriteClick = {
                             viewModel.toggleFavorite(station.id, !station.isFavorite)
                         },
@@ -126,7 +140,7 @@ fun HomeScreen(
                     ) {
                         items(uiState.favoriteStations) { station ->
                             Card(
-                                onClick = { /* TODO: Play station */ },
+                                onClick = { playerViewModel.playStation(station) },
                                 modifier = Modifier
                                     .width(140.dp)
                                     .height(160.dp)
@@ -170,7 +184,7 @@ fun HomeScreen(
                 items(uiState.recentlyPlayed) { station ->
                     StationCard(
                         station = station,
-                        onStationClick = { /* TODO: Play station */ },
+                        onStationClick = { playerViewModel.playStation(station) },
                         onFavoriteClick = {
                             viewModel.toggleFavorite(station.id, !station.isFavorite)
                         },

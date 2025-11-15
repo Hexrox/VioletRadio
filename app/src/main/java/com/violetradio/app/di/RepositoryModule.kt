@@ -1,6 +1,8 @@
 package com.violetradio.app.di
 
+import com.violetradio.app.data.repository.PlayerRepositoryImpl
 import com.violetradio.app.data.repository.StationRepositoryImpl
+import com.violetradio.app.domain.repository.PlayerRepository
 import com.violetradio.app.domain.repository.StationRepository
 import dagger.Binds
 import dagger.Module
@@ -20,4 +22,10 @@ abstract class RepositoryModule {
     abstract fun bindStationRepository(
         stationRepositoryImpl: StationRepositoryImpl
     ): StationRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindPlayerRepository(
+        playerRepositoryImpl: PlayerRepositoryImpl
+    ): PlayerRepository
 }
