@@ -27,6 +27,8 @@ import com.violetradio.app.ui.player.PlayerViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
+    onNavigateToPlayer: () -> Unit = {},
+    onNavigateToSearch: () -> Unit = {},
     viewModel: HomeViewModel = hiltViewModel(),
     playerViewModel: PlayerViewModel = hiltViewModel(),
     modifier: Modifier = Modifier
@@ -54,7 +56,7 @@ fun HomeScreen(
                             )
                         }
                     }
-                    IconButton(onClick = { /* TODO: Navigate to search */ }) {
+                    IconButton(onClick = onNavigateToSearch) {
                         Icon(
                             imageVector = Icons.Default.Search,
                             contentDescription = "Szukaj"
@@ -69,7 +71,7 @@ fun HomeScreen(
                 playbackState = playbackState,
                 onPlayPauseClick = { playerViewModel.togglePlayPause() },
                 onStopClick = { playerViewModel.stop() },
-                onPlayerClick = { /* TODO: Navigate to full player */ },
+                onPlayerClick = onNavigateToPlayer,
                 modifier = Modifier.padding(8.dp)
             )
         },
