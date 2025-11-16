@@ -1,6 +1,8 @@
 package com.violetradio.app.di
 
 import com.violetradio.app.data.repository.PlayerRepositoryImpl
+import com.violetradio.app.data.repository.SpotifyRepository
+import com.violetradio.app.data.repository.SpotifyRepositoryImpl
 import com.violetradio.app.data.repository.StationRepositoryImpl
 import com.violetradio.app.domain.repository.PlayerRepository
 import com.violetradio.app.domain.repository.StationRepository
@@ -28,4 +30,10 @@ abstract class RepositoryModule {
     abstract fun bindPlayerRepository(
         playerRepositoryImpl: PlayerRepositoryImpl
     ): PlayerRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindSpotifyRepository(
+        spotifyRepositoryImpl: SpotifyRepositoryImpl
+    ): SpotifyRepository
 }

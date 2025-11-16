@@ -123,6 +123,9 @@ dependencies {
     // Timber (Logging)
     implementation(libs.timber)
 
+    // Spotify
+    implementation(libs.spotify.auth)
+
     // Testing
     testImplementation(libs.bundles.testing)
     androidTestImplementation(libs.bundles.android.testing)

@@ -110,6 +110,20 @@ object NetworkModule {
             .create(SpotifyApi::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideSpotifyAuthService(
+        @Named("SpotifyOkHttp") okHttpClient: OkHttpClient,
+        gson: Gson
+    ): com.violetradio.app.data.remote.spotify.SpotifyAuthService {
+        return Retrofit.Builder()
+            .baseUrl("https://accounts.spotify.com/")
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+            .create(com.violetradio.app.data.remote.spotify.SpotifyAuthService::class.java)
+    }
+
     // === YouTube ===
 
     @Provides
